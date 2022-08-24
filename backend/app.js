@@ -18,9 +18,11 @@ app.use(express.json())
 //importing routes
 const router=express.Router();
 const user=require('./routes/user.Routes')
+const turf=require('./routes/turf.Routes')
 
 //using routes
 app.use('/api/v2',user)
+app.use('/api/turf',turf)
 
 
 

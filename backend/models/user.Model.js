@@ -39,6 +39,7 @@ users :[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"User",
 }],
+
 ResetPasswordToken:String,
 ResetPasswordExpire:Date,
 });
