@@ -15,7 +15,7 @@ sports:[{type:String,
     enum:['cricket','football','basketball','badminton','volleyball'],
     default:null
 }],
-playground:[{
+playgrounds:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'playground'
 
@@ -33,7 +33,9 @@ availabledates:[{
 }],
 bookings:[{ type:mongoose.Schema.Types.ObjectId,
     ref:'booking'
-}]
-})
+}],
+booking_price:{type:Number,required:true}
+
+});
 
 module.exports=mongoose.model('Turf',turfSchema);

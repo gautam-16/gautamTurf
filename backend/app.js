@@ -19,10 +19,12 @@ app.use(express.json())
 const router=express.Router();
 const user=require('./routes/user.Routes')
 const turf=require('./routes/turf.Routes')
+const booking=require('./routes/booking.Routes')
 
 //using routes
 app.use('/api/v2',user)
 app.use('/api/turf',turf)
+app.use('/api/booking',booking)
 
 
 
