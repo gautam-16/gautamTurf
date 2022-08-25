@@ -4,7 +4,7 @@ const{register,loginUser,logout,updateRole,getUser, getUserDetails, updateUserPr
 const{isAuthenticated,isAdmin,isMerchant}=require('../middlewares/auth')
 const router=express.Router();
 router.route('/register').post(register)
-router.route('/loginuser').post(loginUser)
+router.route('/login').post(loginUser)
 router.route('/updateRole').put(updateRole)
 router.route('/getuserdetails/:id').post(isAuthenticated,getUserDetails)
 router.route('/update/:id').put(isAuthenticated,updateUserProfile)
