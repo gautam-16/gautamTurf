@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const User=require('../models/user.Model')
+const User=require('./user.Model')
 const turfSchema= new mongoose.Schema({
     owner:[{
         type:mongoose.Schema.Types.ObjectId,
