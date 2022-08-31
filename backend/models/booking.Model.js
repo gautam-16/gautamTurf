@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
-const User=require('../models/user.Model')
-const Turf=require('../models/turf.Model')
+const User=require('./user.Model')
+const Turf=require('./turf.Model')
 
 
 const bookingSchema= new mongoose.Schema({
@@ -16,7 +16,7 @@ const bookingSchema= new mongoose.Schema({
     et:{type:String},
     date:{type:String}
 
-})
+});
 
 
 

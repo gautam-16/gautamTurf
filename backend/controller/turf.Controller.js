@@ -92,3 +92,24 @@ exports.createPlayground=async(req,res)=>{
         return res.status(500).json({success:false,message:error.message})
     }
 }
+
+exports.updatePlayground=async(req,res)=>{
+    try {
+        const playground=await Playground.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
+        return res.status(200).json({success:true,user});
+
+    }
+        
+    catch (error) {
+        return res.status(500).json({success:false,message:error.message})
+        
+    }}
+    exports.cancelPlayground=async(req,res)=>{
+        try {
+             const playground= await Playground.findByIdAndUpdate(req.params.id,{$set:{'playground_status':req.body.playground_status}})
+            return res.status(200).send({success:true,
+                data:playground})
+        } catch (error) {
+            return res.status(500).json({success:false,message:error.message})
+        }
+    }
