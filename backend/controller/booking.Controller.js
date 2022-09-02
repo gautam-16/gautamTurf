@@ -76,11 +76,12 @@ exports.createBooking=async(req,res)=>{
           const endTime = new Date(req.body.et)
           let turfsTime=new Date(turf.hoursopen.ot)
           let turfeTime=new Date(turf.hoursopen.ct)
+    
 
           const cond11 =  startTime.getTime()>turfsTime.getTime() && startTime.getTime()<turfeTime.getTime();
 
           const cond22 =  endTime.getTime()>turfsTime.getTime() && endTime.getTime()<turfeTime.getTime();
-       if (cond11 && cond22) {
+          if (cond11 && cond22) {
        
 
         booking = await Booking.findOne().where(req.body.st).where(req.body.et);
