@@ -32,10 +32,29 @@ exports.getBooking = async (req, res) => {
 }
 exports.cancelBooking = async (req, res) => {
     try {
-        const booking = await Booking.findById(req.params.id, { $set: { 'booking_status': req.body.booking_status } })
-        console.log(booking)
-
-        res.status(200).json({ success: true, booking })
+    const{booking_id,booking_status}=req.body;
+    let booking= await Booking.findOne({booking_id})
+        // console.log(booking)
+        let id=booking.playground_id.toString();
+        // console.log(id)
+        let playground=await Playground.findById(id)
+        // console.log(playground)
+        for(a of playground.slot){
+            if(a.booking_id.toString()==req.body.booking_id.toString()){
+                // console.log(a,"a object",b,"string",a.booking,"a.booking")
+                c=playground.slot.indexOf(a)
+                console.log(a,"a")
+                console.log(c,"c")
+                playground.slot.splice(c,1)
+                await playground.save()
+                console.log(playground.slot)
+                booking.booking_status=false;
+                await booking.save()
+                res.status(200).json({ success: true, booking })
+            }
+        }
+        return res.status(400).json({success:false,message:"cannot find id"})
+       
 
     } catch (error) {
         return res.status(500).json({ success: false, message: error.message })
@@ -74,7 +93,7 @@ exports.createBooking=async(req,res)=>{
                 user_id, turfname, createdat, playground_id, location,
                 booking_cost, booking_status, payment_status, st, et
             })
-            obj = { st: req.body.st, et: req.body.et}
+            obj = { st: req.body.st, et: req.body.et,booking_id:booking._id}
             playground.slot.push(obj)
             await playground.save()
             return res.status(200).json({ success: true, booking });
@@ -114,7 +133,7 @@ if(flag==1){
         user_id, turfname, createdat, playground_id, location,
         booking_cost, booking_status, payment_status, st, et
     })
-    obj = { st: req.body.st, et: req.body.et}
+    obj = { st: req.body.st, et: req.body.et,booking_id:booking._id}
     playground.slot.push(obj)
     await playground.save()
     return res.status(200).json({ success: true, booking })
