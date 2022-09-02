@@ -116,7 +116,7 @@ exports.createBooking=async(req,res)=>{
                 }
               
                 const cond1 =  startTime.getTime()< start.getTime() && endTime.getTime() < start.getTime();
-                const cond2 = startTime.getTime()>end.getTime()&& startTime.getTime()>end.getTime();
+                const cond2 = startTime.getTime()>end.getTime()&& endTime.getTime()>end.getTime();
                 if (cond1 || cond2){
                 
                     flag=1;
