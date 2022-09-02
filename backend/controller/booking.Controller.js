@@ -51,14 +51,23 @@ exports.createBooking=async(req,res)=>{
         const { user_id, turfname, createdat, playground_id, location,
             booking_cost, booking_status, payment_status,st,et} = req.body;
             //if playground.slot is empty
-            let playground = await Playground.findOne({ playground_id });
-            let turf =await Turf.findOne({turfname})
-            console.log(turf.hoursopen.ot,turf.hoursopen.ct)
+          let turf =await Turf.findOne({turfname})
+
+          const startTime = new Date(req.body.st);
+          const endTime = new Date(req.body.et)
+          let turfsTime=new Date(turf.hoursopen.ot)
+          let turfeTime=new Date(turf.hoursopen.ct)
+
+          const cond11 =  startTime.getTime()>turfsTime.getTime() && startTime.getTime()<turfeTime.getTime();
+
+          const cond22 =  endTime.getTime()>turfsTime.getTime() && endTime.getTime()<turfeTime.getTime();
+       if (cond11 && cond22) {
        
+
         booking = await Booking.findOne().where(req.body.st).where(req.body.et);
-        console.log(booking)
-      if (req.body.st>turf.hoursopen.ot && req.body.et<turf.hoursopen.ot) {
-        
+        //console.log(booking)
+        let playground = await Playground.findOne({ playground_id });
+    
         if (playground.slot == 0) {
             console.log('hello')
             let booking = await Booking.create({
@@ -72,38 +81,51 @@ exports.createBooking=async(req,res)=>{
         }
 
         //if playground.slot is not empty
-
+        let flag=0;
         if (playground.slot != 0) {
-            console.log('hello1')
-            for (a of playground.slot) {
-                
-                //if time provided in req.body is equal to the time logged in database then the
-                //following condition will run
-               console.log( a.st );
-                if (a.st == req.body.st || a.et == req.body.et) {
+            //console.log('hello1')
+            for (a of playground.slot){
+                console.log('hello not empty')
+            //    console.log( a.st );
+            const start=new Date(a.st)
+            const end= new Date(a.et)
+
+        
+                if (start.getTime() == startTime.getTime() || endTime.getTime() == end.getTime()) {
                     return res.status(400).json({ success: false, message: 'already exists' })
                 }
-                const startTime = new Date(req.body.st);
-                const endTime = new Date(req.body.et)
-                const start=new Date(a.st)
-                const end= new Date(a.et)
+              
                 const cond1 =  startTime.getTime()< start.getTime() && endTime.getTime() < start.getTime();
                 const cond2 = startTime.getTime()>end.getTime()&& startTime.getTime()>end.getTime();
-                if (cond1|| cond2){
-                    console.log('hello2')
-                    let booking = await Booking.create({
-                        user_id, turfname, createdat, playground_id, location,
-                        booking_cost, booking_status, payment_status, st, et
-                    })
-                    obj = { st: req.body.st, et: req.body.et}
-                    playground.slot.push(obj)
-                    await playground.save()
-                    return res.status(200).json({ success: true, booking })
+                if (cond1 || cond2){
+                
+                    flag=1;
+                
+                }else{
+                    flag=0;
+                    break;
                 }
-                return res.status(400).json({ success: false, message: "cannot create booking"});
-        }}}
+            }}
+
+if(flag==1){
+    console.log('found condition to create booking');
+
+    let booking = await Booking.create({
+        user_id, turfname, createdat, playground_id, location,
+        booking_cost, booking_status, payment_status, st, et
+    })
+    obj = { st: req.body.st, et: req.body.et}
+    playground.slot.push(obj)
+    await playground.save()
+    return res.status(200).json({ success: true, booking })
+
+}
+else{
+return res.status(400).json({ success: false, message: "cannot create booking"});}
+       }
     return res.status(400).json({success:false,
-        message:"cannot create booking.exceeds turf opening/closing time."})}
+        message:"cannot create booking.exceeds turf opening/closing time."})
+ } 
     catch (error) {
         return res.status(500).json({success:false,message:error.message})
         
