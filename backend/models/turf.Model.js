@@ -20,10 +20,7 @@ playgrounds:[{
     ref:'playground'
 
 }],
-hoursopen:{
-    type:String,
-    required:[true,"Working hours must be defined"]
-},
+hoursopen:{ot:{type:Date},ct:{type:Date}},
 location:{
     type:String
 },
@@ -35,7 +32,10 @@ bookings:[{ type:mongoose.Schema.Types.ObjectId,
     ref:'booking'
 }],
 booking_price:{type:Number,required:true}
+,
+turf_status:{type:String}
 
 });
+
 
 module.exports=mongoose.model('Turf',turfSchema);

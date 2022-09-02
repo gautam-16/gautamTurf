@@ -9,12 +9,11 @@ const bookingSchema= new mongoose.Schema({
     createdat:{type:Date,default:Date.now()},
     playground_id:{type:mongoose.Schema.Types.ObjectId,ref:'playground'},
     location:{type:String,ref:'Turf'},
-    booking_cost:{type:Number,ref:"Turf"},
+    booking_price:{type:Number,ref:"Turf"},
     booking_status:{type:Boolean,required:[true,"confimed booking"]},
     payment_status:{type:String,default:"Pending"},
-    st:{type:String},
-    et:{type:String},
-    date:{type:String}
+    st:{type:Date},
+    et:{type:Date}
 
 });
 

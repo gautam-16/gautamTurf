@@ -2,7 +2,6 @@ const User=require('../models/user.Model')
 const jwt = require("../middlewares/jwt");
 const crypto=require('crypto')
 const bcrypt=require('bcrypt')
-const { default: mongoose } = require('mongoose');
 const {sendEmail}=require('../middlewares/sendEmail')
 const {getResetPasswordToken}=require('../middlewares/jwt')
 
@@ -132,11 +131,10 @@ catch(error){
     return res.status(500).json({success:false,message:error.message})
 }
 }
-exports.deleteUserProfile=async(req,res)=>{
+exports.blockUserProfile=async(req,res)=>{
     try {
-        const user= await User.findByIdAndDelete(req.params.id)
-        return res.status(200).json({success:true,message:"user deleted successfully"})
-        
+        const user= await User.findByIdAndUpdate(req.params.id,{$set:{'user_status':req.body.user_status}})
+        return res.status(200).json({success:true,message:"user blocked/unblocked successfully",user});
 
 
     } catch (error) {
@@ -170,11 +168,7 @@ exports.forgotPassword=async(req,res)=>{
         await user.save();
     const resetUrl=`${req.protocol}://${req.get("host")}/api/v2/password/reset/${resetPasswordToken}`
     const message=`Reset your password by clicking on the link below:\ ${resetUrl}`
-
-
-
     try { 
-        
         await sendEmail({email:user.email
             ,subject:"Reset Password"
             ,message,});
@@ -190,10 +184,7 @@ exports.forgotPassword=async(req,res)=>{
       res.status(500).json
       ({success:false,
     message:error.message})   
-        
-    }
-
-        
+    } 
     } catch (error) {
         return res.status(500).json
         ({success:false,
@@ -208,25 +199,26 @@ exports.resetPassword=async(req,res)=>{
         .createHash("sha256")
         .update(req.params.token)
         .digest("hex")
+        console.log(resetPasswordToken)
+
     const user=await User.findOne({
         resetPasswordToken,
         resetPasswordExpire:{$gt:Date.now()}
-       
-    })
-
+    }).select("+password");
     if(!user){
         return res.status(401).json({
             success:false,
             message:"Token is invalid or hash expired"
         })
     }
-    user.password=req.body.password
-    user.resetPasswordToken=undefined
-    user.resetPasswordExpire=undefined
+console.log(user)
+    user.password=req.body.password;
     await user.save()
+    // user.resetPasswordToken=undefined;
+    // user.resetPasswordExpire=undefined;
     res.status(200).json({
         success:true,
-        message:"password Updated"
+        message:"password reset successfully"
     })
     }catch(error){
         res.status(500).json({
