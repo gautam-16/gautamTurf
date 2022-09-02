@@ -4,11 +4,11 @@ const env=require('../newrepo/backend/config/.env')
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url:"mongodb+srv://vini:vini123456@cluster0.qwieqrc.mongodb.net/?retryWrites=true&w=majority"
+    url:"mongodb://localhost:27017/turf"
     ,
 
     // TODO Change this to your database name:
-    databaseName: "test",
+    databaseName: "turf",
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting

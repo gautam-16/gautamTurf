@@ -42,6 +42,11 @@ users :[{
 
 ResetPasswordToken:String,
 ResetPasswordExpire:Date,
+user_status:{
+    type:String,
+    enum:['blocked','unblocked'],
+    default:'unblocked'
+}
 });
 
 
