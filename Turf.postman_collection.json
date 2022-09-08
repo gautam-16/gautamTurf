@@ -1,0 +1,738 @@
+{
+	"info": {
+		"_postman_id": "02a29caa-e193-4f05-863b-8a7f46f7780f",
+		"name": "Turf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21239969"
+	},
+	"item": [
+		{
+			"name": "user functions",
+			"item": [
+				{
+					"name": "register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"gautam\",\n    \"email\":\"gautam@gmail.com\",\n    \"password\":\"gautam\",\n    \"firstname\":\"Gautam\",\n    \"lastname\":\"Atre\",\n    \"phone\":\"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"gautam@gmail.com\",\n    \"password\":\"gautam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MjAxNjYxMn0.mwg8oCzufhvAlXtqCMzSAG7EooFVZhB9J5XCX4vBD14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/getuser/63105bf7d6f9cb2e50930b1a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"getuser",
+								"63105bf7d6f9cb2e50930b1a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MjAxNzg0NH0.-d3mMG_HkQE4NgRyynguuH480jvGEHeaQNSrlS56AGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone\":\"912349\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/update/63105bf7d6f9cb2e50930b1a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"update",
+								"63105bf7d6f9cb2e50930b1a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block/unblock user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MjAxNzg0NH0.-d3mMG_HkQE4NgRyynguuH480jvGEHeaQNSrlS56AGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_status\":\"blocked\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/blockuser/6310628c23ef92fcee8779d1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"blockuser",
+								"6310628c23ef92fcee8779d1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"11@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/forgot/password/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"forgot",
+								"password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"11@gmail.com\",\n    \"password\":\"121212\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/password/reset/c3aede3f2c8f503eee7e8077837f222c8ec1b900",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"password",
+								"reset",
+								"c3aede3f2c8f503eee7e8077837f222c8ec1b900"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoidXNlciIsImlhdCI6MTY2MjAxNzg0NH0.-d3mMG_HkQE4NgRyynguuH480jvGEHeaQNSrlS56AGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "updatepassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMjg5NTZ9.HXUu-CtpZuTN7Yskl_v8kBMxVNIEqyT8L2h2qbgALJo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"gautam@gmail.com\",\n    \"updatedkey\":\"gautam\",\n    \"password\":\"121212\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v2/updatepass",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v2",
+								"updatepass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "removing playground",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzQyOTh9.W6-HQQzXNVjH1Rrn2XLAc8AGlhvVbr-ZZwhK7CCu4_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"playground_status\":\"removed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/cancelplayground/6310a5bb2aa6ca01c2b11e34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"cancelplayground",
+								"6310a5bb2aa6ca01c2b11e34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "turf functions",
+			"item": [
+				{
+					"name": "Register turf",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzAzMDB9.E3KP4duwADCFKZHvEXf25PNR4yTYUUxmbr2TWd5ntXc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"owner\":\"63105bf7d6f9cb2e50930b1a\",\n    \"managers\":[\"63105bf7d6f9cb2e50930b1a\",\"631062a323ef92fcee8779d4\"],\n    \"turfname\":\"Gautam's turf\",\n    \"sports\":[\"cricket\",\"basketball\"],\n    \"hoursopen\":\"10 to 5\",\n    \"location\":\"Indore\",\n    \"bookings\":\"\",\n    \"booking_price\":\"1500\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/registerturf",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"registerturf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update turf",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzAzMDB9.E3KP4duwADCFKZHvEXf25PNR4yTYUUxmbr2TWd5ntXc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"turfname\":\"random turf1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/updateturf1/631092f981d0bf4e42ef6b41",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"updateturf1",
+								"631092f981d0bf4e42ef6b41"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove turf",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzAzMDB9.E3KP4duwADCFKZHvEXf25PNR4yTYUUxmbr2TWd5ntXc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"turf_status\":\"removed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/removeturf/631092f981d0bf4e42ef6b41",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"removeturf",
+								"631092f981d0bf4e42ef6b41"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "playground",
+			"item": [
+				{
+					"name": "create Playground",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzQyOTh9.W6-HQQzXNVjH1Rrn2XLAc8AGlhvVbr-ZZwhK7CCu4_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"turfname\":\"random turf1\",\n    \"turf_id\":\"631092f981d0bf4e42ef6b41\",\n    \"slot\":[],\n    \"playground_name\":\"play2\",\n    \"managers\":[\"63105bf7d6f9cb2e50930b1a\"],\n    \"playground_stauts\":\"unbooked\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/createplayground",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"createplayground"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update playground",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIwMzQyOTh9.W6-HQQzXNVjH1Rrn2XLAc8AGlhvVbr-ZZwhK7CCu4_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"slot\":[{\"st\":\"12\",\"et\":\"13\",\"date\":\"121213\"}]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/turf/updateplayground/6310a5bb2aa6ca01c2b11e34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"turf",
+								"updateplayground",
+								"6310a5bb2aa6ca01c2b11e34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bookings",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA2MjhjMjNlZjkyZmNlZTg3NzlkMSIsImZpcnN0TmFtZSI6IjExIiwibGFzdE5hbWUiOiIxMSIsImVtYWlsIjoiMTFAZ21haWwuY29tIiwiaWRtVXNlciI6ZmFsc2UsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyMDM2NzQ3fQ.OlsB-IMHbaMdsfPZsN2i0pnj8bmvEkkPo8LNAm1F3_4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":\"6310628c23ef92fcee8779d1\",\n    \"turfname\":\"random turf1\",\n    \"playground_id\":\"6316e77a1e6b096b85470465\",\n    \"location\":\"Indore\",\n    \"booking_status\":\"true\",\n    \"st\":\"2022-09-03T13:01:00.000Z\",\n    \"et\":\"2022-09-03T14:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/booking/createbooking/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"booking",
+								"createbooking",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA2MjhjMjNlZjkyZmNlZTg3NzlkMSIsImZpcnN0TmFtZSI6IjExIiwibGFzdE5hbWUiOiIxMSIsImVtYWlsIjoiMTFAZ21haWwuY29tIiwiaWRtVXNlciI6ZmFsc2UsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyMTE5NDMwfQ.GWvs9wS82jMYmWEAZW_06r3pkPvw7WQrz-nEBkW1cVM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"booking_id\":\"63159a3a61ef784ee4fed95a\",\n    \"booking_status\":\"false\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/booking/cancelbooking/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"booking",
+								"cancelbooking",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTA1YmY3ZDZmOWNiMmU1MDkzMGIxYSIsImZpcnN0TmFtZSI6IkdhdXRhbSIsImxhc3ROYW1lIjoiQXRyZSIsImVtYWlsIjoiZ2F1dGFtQGdtYWlsLmNvbSIsImlkbVVzZXIiOmZhbHNlLCJyb2xlIjoibWVyY2hhbnQiLCJpYXQiOjE2NjIzNjE3ODV9.K7hQ-ZOolacf0q7B_OVq6MpPoQ9j19ahtOBMsb8K1DU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"booking_id\":\"63197bdc1a70ccf000191007\",\n    \"new_st\":\"2022-09-03T14:01:00.000Z\",\n    \"new_et\":\"2022-09-03T15:00:00.000Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/booking/updatebooking/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"booking",
+								"updatebooking",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
